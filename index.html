@@ -177,20 +177,17 @@ body {
 /* ═══════════════════════════════════════
    GOOGLE LOADING OVERLAY
 ═══════════════════════════════════════ */
-.google-loading {
-  position:absolute; inset:0; z-index:50;
-  background:var(--cream);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px;
-  opacity:0; pointer-events:none; transition:opacity .3s;
+function googleSignIn() {
+  google.accounts.id.initialize({
+    client_id: 'TU_CLIENT_ID_AQUI.apps.googleusercontent.com',
+    callback: handleGoogleLogin
+  });
+  
+  google.accounts.id.renderButton(
+    document.querySelector('.btn-google'),
+    { theme: "outline", size: "large" }
+  );
 }
-.google-loading.show { opacity:1; pointer-events:all; }
-.g-spinner {
-  width:48px; height:48px; border:3px solid var(--beige-dark);
-  border-top-color:var(--sage-dark); border-radius:50%;
-  animation:spin .8s linear infinite;
-}
-.g-load-text { font-size:15px; color:var(--text-mid); }
-
 /* ═══════════════════════════════════════
    BUTTONS
 ═══════════════════════════════════════ */
